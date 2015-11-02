@@ -53,13 +53,13 @@ for i =1:100
 
         correl = -x'*(y-x*w);
         epsi = 1.e-6;
-        indNonZero = find(abs(w)>=epsi);
+        indZero = find(abs(w)>=epsi);
         indNonZero = find(abs(w)<epsi);
 
         if abs(correl+lambda*sign(w(k)))<epsi & abs(correl)<=lambda
           break;
         else
-           toOptimise = [indZero(find(abs(correl(indZero))>=lambda)),indNonZero(find(abs(abs(correl(indZero))-lambda))>=epsi))
+           toOptimise = [indZero(find(abs(correl(indZero))>=lambda)),indNonZero(find(abs(abs(correl(indZero))-lambda))>=epsi)]
         end
     end
 end
